@@ -1,0 +1,1 @@
+web: gunicorn goodreader.wsgi --log-file - 
