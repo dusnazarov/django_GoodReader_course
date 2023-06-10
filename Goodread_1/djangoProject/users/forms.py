@@ -2,6 +2,16 @@
 from django import forms 
 from django.contrib.auth.models import User
 
+
+## 1) forms /////////////////////////////////////
+# class UserCreateForm(forms.Form):
+#     username = forms.CharField(max_length=150)
+#     first_name = forms.CharField(max_length=150)
+#     last_name = forms.CharField(max_length=150)
+#     email = forms.CharField(max_length=150)
+#     password = forms.CharField(max_length=128)
+
+## 2) forms /////////////////////////////////////
 # class UserCreateForm(forms.Form):
 #     username = forms.CharField(max_length=150)
 #     first_name = forms.CharField(max_length=150)
@@ -27,13 +37,13 @@ from django.contrib.auth.models import User
 #         user.set_password(password)
 #         user.save()
 #         return user   
-
+  
+# # 3) forms /////////////////////////////////////
 class UserCreateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username','first_name', 'last_name','email','password')
-        
-        
+           
     def save(self, commit=True):
         user = super().save(commit)
         user.set_password(self.cleaned_data['password'])
@@ -42,8 +52,7 @@ class UserCreateForm(forms.ModelForm):
     
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=150)
-    password = forms.CharField(max_length=128)
-                
+    password = forms.CharField(max_length=128)                
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:

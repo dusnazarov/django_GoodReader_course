@@ -4,14 +4,11 @@ from book.models import Book
 
 
 
-
-
-
 class BooksView(View):
-    def get(self,request):
+    def get(self, request):
         books = Book.objects.all()
-        context = {'books':books}
-        return render(request,'books/list.html',context)
+        context = {'books': books}
+        return render(request,'books/list.html', context)
     
 
     

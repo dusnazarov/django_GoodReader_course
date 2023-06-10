@@ -9,20 +9,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
 
-
-
 class RegisterView(View):
     def get(self, request):
-        create_form = UserCreateForm()
-        
-        context = {
-            'form':create_form
-        }       
-        
+        create_form = UserCreateForm()        
+        context = {'form':create_form}        
         return render(request, 'users/register.html',context)
-    
-         
-        
+            
     def post(self,request):
         create_form = UserCreateForm(data=request.POST)
         if create_form.is_valid():
@@ -30,12 +22,9 @@ class RegisterView(View):
               
             return redirect('users:login')
         else: 
-            context = {
-                'form':create_form
-            }       
-        
-        return render(request, 'users/register.html',context)
-                
+            context = {'form':create_form } 
+        return render(request, 'users/register.html', context)
+            
      
 class LoginView(View):
     def get(self, request):
@@ -54,8 +43,7 @@ class LoginView(View):
             return redirect('books:list')
         else:        
         
-            context =  {'form':login_form}
-            
+            context =  {'form':login_form}            
             return render(request,'users/login.html', context)
     
     

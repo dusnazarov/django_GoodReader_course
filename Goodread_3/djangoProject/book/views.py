@@ -6,10 +6,6 @@ from django.views.generic import ListView, DetailView
 
 
 
-
-
-
-
 class BooksView(ListView):
     template_name = 'books/list.html'
     queryset = Book.objects.all()
